@@ -17,7 +17,7 @@ import { CesiumController } from "./modules/CesiumController";
 function satvisSetup(customConfig = {}) {
   // Enable sentry for production version
   if (window.location.href.includes("satvis.space")) {
-    Sentry.init({ dsn: "https://d17adce0cef2411aa49e3fc6d6ec0aa7@o294643.ingest.sentry.io/1541793" });
+    Sentry.init({ dsn: "https://6c17c8b3e731026b3e9e0df0ecfc1b83@o294643.ingest.us.sentry.io/1541793" });
   }
 
   // Setup and init app
