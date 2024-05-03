@@ -119,7 +119,7 @@ export class DescriptionHelper {
       <tr>
         ${htmlName}
         <td>${countdown}</td>
-        <td>${dayjs(pass.start).format("DD.MM HH:mm:ss")}</td>
+        <td><a onclick='parent.postMessage(${JSON.stringify(pass)}, "*")'>${dayjs(pass.start).format("DD.MM HH:mm:ss")}</td>
         <td>${dayjs(pass.end).format("HH:mm:ss")}</td>
         <td class="ibt-right">${pass.maxElevation.toFixed(0)}&deg</td>
         <td class="ibt-right">${pass.azimuthApex.toFixed(2)}&deg</td>

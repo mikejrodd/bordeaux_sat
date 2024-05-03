@@ -530,5 +530,17 @@ export class CesiumController {
       style.appendChild(node);
       head.appendChild(style);
     }, false);
+
+    // Allow js in infobox
+    frame.setAttribute("sandbox", "allow-same-origin allow-popups allow-forms allow-scripts");
+    frame.src = "about:blank";
+
+    // Allow time changes from infobox
+    window.addEventListener("message", (e) => {
+      const pass = e.data;
+      if ("start" in pass) {
+        this.setTime(pass.start);
+      }
+    });
   }
 }
