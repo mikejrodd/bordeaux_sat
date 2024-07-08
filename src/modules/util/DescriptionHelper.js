@@ -1,8 +1,10 @@
 import * as Cesium from "@cesium/engine";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import utc from "dayjs/plugin/utc";
 
 dayjs.extend(relativeTime);
+dayjs.extend(utc);
 
 export class DescriptionHelper {
   /** cachedCallbackProperty
@@ -119,8 +121,8 @@ export class DescriptionHelper {
       <tr>
         ${htmlName}
         <td>${countdown}</td>
-        <td><a onclick='parent.postMessage(${JSON.stringify(pass)}, "*")'>${dayjs(pass.start).format("DD.MM HH:mm:ss")}</td>
-        <td>${dayjs(pass.end).format("HH:mm:ss")}</td>
+        <td><a onclick='parent.postMessage(${JSON.stringify(pass)}, "*")'>${dayjs.utc(pass.start).format("DD.MM HH:mm:ss")}</td>
+        <td>${dayjs.utc(pass.end).format("HH:mm:ss")}</td>
         <td class="ibt-right">${pass.maxElevation.toFixed(0)}&deg</td>
         <td class="ibt-right">${pass.azimuthApex.toFixed(2)}&deg</td>
       </tr>
