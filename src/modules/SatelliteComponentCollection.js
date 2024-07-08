@@ -264,7 +264,7 @@ export class SatelliteComponentCollection extends CesiumComponentCollection {
     const primitive = new Cesium.Primitive({
       geometryInstances: new Cesium.GeometryInstance({
         geometry: new Cesium.PolylineGeometry({
-          positions: this.props.getSampledInertialPositionsForNextOrbit(this.viewer.clock.currentTime),
+          positions: this.props.getSampledPositionsForNextOrbit(this.viewer.clock.currentTime),
           width: 2,
           arcType: Cesium.ArcType.NONE,
           // granularity: Cesium.Math.RADIANS_PER_DEGREE * 10,
@@ -290,7 +290,7 @@ export class SatelliteComponentCollection extends CesiumComponentCollection {
     // Currently unused
     const geometryInstance = new Cesium.GeometryInstance({
       geometry: new Cesium.PolylineGeometry({
-        positions: this.props.getSampledInertialPositionsForNextOrbit(this.viewer.clock.currentTime),
+        positions: this.props.getSampledPositionsForNextOrbit(this.viewer.clock.currentTime),
         width: 2,
         arcType: Cesium.ArcType.NONE,
         // granularity: Cesium.Math.RADIANS_PER_DEGREE * 10,
@@ -315,16 +315,18 @@ export class SatelliteComponentCollection extends CesiumComponentCollection {
     this.createCesiumSatelliteEntity("Orbit track", "path", path);
   }
 
-  createGroundTrack(width = 165) {
+  createGroundTrack() {
     if (this.props.orbit.orbitalPeriod > 60 * 2) {
       // Ground track unavailable for non-LEO satellites
       return;
     }
     const corridor = new Cesium.CorridorGraphics({
       cornerType: Cesium.CornerType.MITERED,
-      material: Cesium.Color.ORANGE.withAlpha(0.2),
+      height: 1000,
+      heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+      material: Cesium.Color.DARKRED.withAlpha(0.25),
       positions: new Cesium.CallbackProperty((time) => this.props.groundTrack(time), false),
-      width: width * 1000,
+      width: this.props.swath * 1000,
     });
     this.createCesiumSatelliteEntity("Ground track", "corridor", corridor);
   }

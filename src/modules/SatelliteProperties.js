@@ -40,11 +40,14 @@ export class SatelliteProperties {
     return this.sampledPosition.fixed.getValue(time);
   }
 
-  getSampledInertialPositionsForNextOrbit(start) {
+  getSampledPositionsForNextOrbit(start, reference = "inertial", loop = true) {
     const end = Cesium.JulianDate.addSeconds(start, this.orbit.orbitalPeriod * 60, new Cesium.JulianDate());
-    const positions = this.sampledPosition.inertial.getRawValues(start, end);
-    // Readd the first position to the end of the array to close the loop
-    return [...positions, positions[0]];
+    const positions = this.sampledPosition[reference].getRawValues(start, end);
+    if (loop) {
+      // Readd the first position to the end of the array to close the loop
+      return [...positions, positions[0]];
+    }
+    return positions;
   }
 
   createSampledPosition(viewer, callback) {
@@ -203,16 +206,14 @@ export class SatelliteProperties {
     return { positionFixed, positionInertial: positionInertialICRF };
   }
 
-  groundTrack(julianDate, samplesFwd = 0, samplesBwd = 120, interval = 30) {
+  groundTrack(julianDate, samplesFwd = 2, samplesBwd = 0, interval = 600) {
     const groundTrack = [];
 
     const startTime = -samplesBwd * interval;
     const stopTime = samplesFwd * interval;
     for (let time = startTime; time <= stopTime; time += interval) {
       const timestamp = Cesium.JulianDate.addSeconds(julianDate, time, new Cesium.JulianDate());
-      const cartographic = Cesium.Cartographic.fromCartesian(this.position(timestamp));
-      const groudPosition = Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, 1000);
-      groundTrack.push(groudPosition);
+      groundTrack.push(this.position(timestamp));
     }
     return groundTrack;
   }
@@ -288,5 +289,22 @@ export class SatelliteProperties {
       // this.pm.notifyAtDate(dayjs().add(5, "second"), `${pass.name} test pass in ${aheadMin} minutes`);
     });
     toast.success(`Notifying for ${passes.length} passes of ${this.name}`);
+  }
+
+  get swath() {
+    // Hardcoded swath for certain satellites
+    if (["SUOMI NPP", "NOAA 20 (JPSS-1)", "NOAA 21 (JPSS-2)"].includes(this.name)) {
+      return 3000;
+    }
+    if (["AQUA", "TERRA"].includes(this.name)) {
+      return 2330;
+    }
+    if (this.name.includes("SENTINEL-2")) {
+      return 290;
+    }
+    if (this.name.includes("LANDSAT")) {
+      return 185;
+    }
+    return 200;
   }
 }
