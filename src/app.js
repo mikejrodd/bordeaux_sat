@@ -1,7 +1,9 @@
 import { createApp, markRaw } from "vue";
 import { createPinia } from "pinia";
 import { Workbox } from "workbox-window";
-import { Tooltip } from "@oruga-ui/oruga-next";
+import PrimeVue from "primevue/config";
+import Aura from "@primevue/themes/aura";
+import Tooltip from "primevue/tooltip";
 import Toast from "vue-toastification";
 import * as Sentry from "@sentry/browser";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -30,7 +32,12 @@ function satvisSetup(customConfig = {}) {
   pinia.use(piniaUrlSync);
   app.use(pinia);
   app.use(router);
-  app.use(Tooltip);
+  app.use(PrimeVue, {
+    theme: {
+      preset: Aura,
+    },
+  });
+  app.directive("tooltip", Tooltip);
   app.use(Toast, {
     position: "bottom-right",
   });

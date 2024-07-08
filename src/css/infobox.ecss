@@ -58,4 +58,5 @@
     max-height: 500px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    background-color: rgba(38, 38, 38, 0.95);
 }

@@ -533,6 +533,7 @@ export class CesiumController {
 
     // Allow js in infobox
     frame.setAttribute("sandbox", "allow-same-origin allow-popups allow-forms allow-scripts");
+    frame.setAttribute("allowTransparency", "true");
     frame.src = "about:blank";
 
     // Allow time changes from infobox
