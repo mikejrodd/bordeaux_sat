@@ -270,7 +270,8 @@ export default {
     if (this.$route.query.time) {
       cc.setTime(this.$route.query.time);
     }
-    this.showUI = !DeviceDetect.inIframe();
+    // this.showUI = !DeviceDetect.inIframe();
+    cc.sats.focusGroundStation();
   },
   methods: {
     toggleMenu(name) {
