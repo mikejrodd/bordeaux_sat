@@ -1,5 +1,5 @@
 {
-  "name": "Bordeaux Remote Monitoring",
+  "name": "SatVis",
   "version": "1.0.0",
   "description": "Bordeaux monitoring satellite orbit visualization with CesiumJS",
   "scripts": {
