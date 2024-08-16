@@ -305,6 +305,6 @@ export class SatelliteProperties {
     if (this.name.includes("LANDSAT")) {
       return 185;
     }
-    return 1000;
+    return 3000;
   }
 }
