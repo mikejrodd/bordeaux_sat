@@ -17,9 +17,6 @@
         <button v-if="cc.minimalUI" v-tooltip="'Mobile'" type="button" class="cesium-button cesium-toolbar-button" @click="toggleMenu('ios')">
           <font-awesome-icon icon="fas fa-mobile-alt" />
         </button>
-        <button v-tooltip="'Debug'" type="button" class="cesium-button cesium-toolbar-button" @click="toggleMenu('dbg')">
-          <font-awesome-icon icon="fas fa-hammer" />
-        </button>
       </div>
       <div v-show="menu.cat" class="toolbarSwitches">
         <satellite-select />
