@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Sample script to add additional satellite TLEs from other sources
+# Script to add Bordeaux satellite TLEs to the output directory
 set -u
 cd "${0%/*}"
 
@@ -8,4 +8,5 @@ TLE_DIR=${DATA_DIR}/tle
 OUT_DIR=$2/tle
 mkdir -p "$OUT_DIR"
 
-egrep -A2 '(FIRST-MOVE|MOVE-II)' --no-group-separator "${TLE_DIR}/groups/active.txt" > "${OUT_DIR}/move.txt"
+# Copy the Bordeaux TLEs to the output directory
+cp "${TLE_DIR}/Bordeaux.txt" "${OUT_DIR}/Bordeaux.txt"
