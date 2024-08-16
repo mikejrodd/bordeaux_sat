@@ -18,7 +18,7 @@ export class CesiumController {
   constructor() {
     this.initConstants();
     this.preloadReferenceFrameData();
-    this.minimalUI = DeviceDetect.inIframe() || DeviceDetect.isIos();
+    this.minimalUI = false;
 
     this.viewer = new Viewer("cesiumContainer", {
       animation: !this.minimalUI,
