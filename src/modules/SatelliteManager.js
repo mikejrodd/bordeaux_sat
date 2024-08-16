@@ -280,18 +280,18 @@ export class SatelliteManager {
     if (position.height < 1) {
       position.height = 0;
     }
-
-    // Create groundstation entity
+  
     this.groundStation = new GroundStationEntity(this.viewer, this, position);
     this.groundStation.show();
-
-    // Set groundstation for all satellites
+  
     this.satellites.forEach((sat) => {
       sat.groundStation = this.groundStation.position;
     });
-
-    // Update store for url state
+  
     const satStore = useSatStore();
     satStore.groundstation = [position.latitude, position.longitude];
+
+    this.focusGroundStation();
   }
+
 }
