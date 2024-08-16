@@ -32,25 +32,30 @@ export class SatelliteManager {
   }
 
   addFromTleUrl(url, tags, updateStore = true) {
-    return fetch(url, {
-      mode: "no-cors",
-    }).then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      return response;
-    }).then((response) => response.text())
+    return fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to load TLE from ${url}`);
+        }
+        return response.text();
+      })
       .then((data) => {
         const lines = data.split(/\r?\n/);
-        for (let i = 3; i < lines.length; i + 3) {
-          const tle = lines.splice(i - 3, i).join("\n");
-          this.addFromTle(tle, tags, updateStore);
+        for (let i = 0; i < lines.length; i += 3) {
+          const tle = lines.slice(i, i + 3).join("\n").trim();
+          if (tle) {
+            this.addFromTle(tle, tags, false);
+          }
+        }
+        if (updateStore) {
+          this.updateStore();
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.error(`Error loading TLE from ${url}:`, error);
       });
   }
+
 
   addFromTle(tle, tags, updateStore = true) {
     const sat = new SatelliteComponentCollection(this.viewer, tle, tags);
