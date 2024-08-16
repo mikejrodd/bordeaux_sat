@@ -51,7 +51,7 @@
           Set from geolocation
         </label>
         <label class="toolbarSwitch">
-          <input type="button" @click="cc.sats.focusGroundStation()">
+          <input type="button" @click="cc.sats.toggleGroundStation()">
           Focus
         </label>
       </div>
