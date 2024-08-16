@@ -47,6 +47,8 @@ export class CesiumController {
     this.viewer.scene.highDynamicRange = true;
     this.viewer.scene.maximumRenderTimeChange = 1 / 30;
     this.viewer.scene.requestRenderMode = true;
+    this.viewer.clock.multiplier = 120;
+
 
     // Cesium Performance Tools
     // this.viewer.scene.debugShowFramesPerSecond = true;
