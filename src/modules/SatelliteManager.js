@@ -279,6 +279,13 @@ export class SatelliteManager {
     }
   }
 
+  toggleFocusGroundStation() {
+    if (this.viewer.trackedEntity === this.groundStation) {
+      this.unfocusGroundStation();
+    } else {
+      this.focusGroundStation();
+    }
+  }
 
   setGroundStation(position) {
     if (this.groundStationAvailable) {
