@@ -281,9 +281,9 @@ export class SatelliteManager {
 
   toggleGroundStation() {
     if (this.viewer.trackedEntity === this.groundStation) {
-      this.unfocusGroundStation();
+      this.viewer.trackedEntity = undefined;
     } else {
-      this.focusGroundStation();
+      this.groundStation.track();
     }
   }
 
