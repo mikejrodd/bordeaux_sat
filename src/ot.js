@@ -18,4 +18,5 @@ cc.sats.addFromTleUrls([
   ["data/tle/groups/iridium-NEXT.txt", ["IridiumNEXT"]],
   ["data/tle/groups/planet.txt", ["Planet"]],
   ["data/tle/groups/spire.txt", ["Spire"]],
+  ["data/tle/groups/Bordeaux.txt", ["Bordeaux"]],
 ]);
