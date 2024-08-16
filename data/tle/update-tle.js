@@ -14,18 +14,18 @@ function downloadTLE(groupName) {
     return;
   }
 
-  const url = `https://celestrak.org/NORAD/elements/gp.php?GROUP=${groupName}&FORMAT=tle`;
-  const path = "groups/";
-  const filename = `${groupName}.txt`;
+  // const url = `https://celestrak.org/NORAD/elements/gp.php?GROUP=${groupName}&FORMAT=tle`;
+  // const path = "groups/";
+  // const filename = `${groupName}.txt`;
 
-  https.get(url, (res) => {
-    const writeStream = fs.createWriteStream(path + filename);
-    res.pipe(writeStream);
-    writeStream.on("finish", () => {
-      writeStream.close();
-      console.log(`Downloaded ${filename}`);
-    });
-  });
+  // https.get(url, (res) => {
+  //   const writeStream = fs.createWriteStream(path + filename);
+  //   res.pipe(writeStream);
+  //   writeStream.on("finish", () => {
+  //     writeStream.close();
+  //     console.log(`Downloaded ${filename}`);
+  //   });
+  // });
 }
 
 // Groups to download TLEs for
