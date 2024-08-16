@@ -169,7 +169,7 @@
       </div>
     </div>
     <div id="toolbarRight">
-      <a v-if="showUI" v-tooltip="'Github'" class="cesium-button cesium-toolbar-button" href="https://github.com/Flowm/satvis/" target="_blank" rel="noopener">
+      <a v-if="showUI" v-tooltip="'Github'" class="cesium-button cesium-toolbar-button" href="https://github.com/mikejrodd" target="_blank" rel="noopener">
         <font-awesome-icon icon="fab fa-github" />
       </a>
       <button v-tooltip="'Toggle UI'" type="button" class="cesium-button cesium-toolbar-button" @click="toggleUI">
