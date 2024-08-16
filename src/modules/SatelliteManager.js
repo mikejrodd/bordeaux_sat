@@ -279,7 +279,7 @@ export class SatelliteManager {
     }
   }
 
-  toggleFocusGroundStation() {
+  toggleGroundStation() {
     if (this.viewer.trackedEntity === this.groundStation) {
       this.unfocusGroundStation();
     } else {
