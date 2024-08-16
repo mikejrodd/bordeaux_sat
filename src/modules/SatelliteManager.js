@@ -269,7 +269,7 @@ export class SatelliteManager {
 
   focusGroundStation() {
     if (this.groundStationAvailable) {
-      this.groundStation.track();
+      this.viewer.trackedEntity = undefined;
     }
   }
 
