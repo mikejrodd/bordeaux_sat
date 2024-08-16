@@ -14,7 +14,6 @@
     "serve:stats": "npm run build:stats && http-server -c-1 dist",
     "start": "npm run update-tle && webpack serve --progress --config webpack/webpack.config.js",
     "start:anyhost": "npm run update-tle && webpack serve --progress --config webpack/webpack.config.js --host 0.0.0.0",
-    "update-tle": "node data/tle/update-tle.js",
     "update-custom-data": "npm run update-tle && bash data/custom/update-custom-data.sh"
   },
   "author": "Mike Rodden",
