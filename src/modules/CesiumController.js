@@ -21,7 +21,7 @@ export class CesiumController {
     this.minimalUI = false;
 
     this.viewer = new Viewer("cesiumContainer", {
-      animation: !this.minimalUI,
+      animation: true,
       baseLayer: this.createImageryLayer("OfflineHighres"),
       baseLayerPicker: false,
       fullscreenButton: !this.minimalUI,
@@ -29,10 +29,10 @@ export class CesiumController {
       geocoder: false,
       homeButton: false,
       navigationHelpButton: false,
-      navigationInstructionsInitiallyVisible: false,
+      navigationInstructionsInitiallyVisible: true,
       sceneModePicker: false,
       selectionIndicator: false,
-      timeline: !this.minimalUI,
+      timeline: true,
       vrButton: !this.minimalUI,
       contextOptions: {
         webgl: {
