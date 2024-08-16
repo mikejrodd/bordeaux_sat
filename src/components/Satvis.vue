@@ -271,7 +271,7 @@ export default {
       cc.setTime(this.$route.query.time);
     }
     // this.showUI = !DeviceDetect.inIframe();
-    cc.sats.focusGroundStation();
+    // cc.sats.focusGroundStation();
   },
   methods: {
     toggleMenu(name) {
