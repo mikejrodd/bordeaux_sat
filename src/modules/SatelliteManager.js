@@ -269,9 +269,16 @@ export class SatelliteManager {
 
   focusGroundStation() {
     if (this.groundStationAvailable) {
+      this.groundStation.track();
+    }
+  }
+
+  unfocusGroundStation() {
+    if (this.groundStationAvailable) {
       this.viewer.trackedEntity = undefined;
     }
   }
+
 
   setGroundStation(position) {
     if (this.groundStationAvailable) {
